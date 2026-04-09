@@ -1,0 +1,49 @@
+{
+  "name": "copilot-chat-webview",
+  "displayName": "Copilot Chat Webview",
+  "description": "A chatbot UI inside VS Code powered by the VS Code Language Model API (Copilot)",
+  "version": "0.0.1",
+  "publisher": "pbhav",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "copilotChat.open",
+        "title": "Open Copilot Chat"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "copilot-chat",
+          "title": "Copilot Chat",
+          "icon": "$(comment-discussion)"
+        }
+      ]
+    },
+    "views": {
+      "copilot-chat": [
+        {
+          "type": "webview",
+          "id": "copilotChat.chatView",
+          "name": "Chat"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.93.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.5.0"
+  }
+}
